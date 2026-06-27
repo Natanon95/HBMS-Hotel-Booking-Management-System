@@ -17,6 +17,7 @@ try {
     flash('success', "Guest checked in to room successfully.");
 } catch (Exception $e) {
     Database::rollback();
-    flash('danger', 'Check-in failed: ' . $e->getMessage());
+    error_log('[checkin] booking_id=' . $id . ' error=' . $e->getMessage());
+    flash('danger', 'Check-in failed. Please try again or contact support.');
 }
 redirect("/modules/bookings/view.php?id={$id}");

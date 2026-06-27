@@ -22,6 +22,7 @@ try {
     flash('success', "Guest checked out. Room queued for cleaning.");
 } catch (Exception $e) {
     Database::rollback();
-    flash('danger', 'Check-out failed: ' . $e->getMessage());
+    error_log('[checkout] booking_id=' . $id . ' error=' . $e->getMessage());
+    flash('danger', 'Check-out failed. Please try again or contact support.');
 }
 redirect("/modules/bookings/view.php?id={$id}");

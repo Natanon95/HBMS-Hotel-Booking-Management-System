@@ -31,6 +31,6 @@ $n          = (int)((new DateTime($roomTotal['check_out']))->diff(new DateTime($
 $newTotal   = ($roomTotal['room_rate'] * max(1, $n)) + $extras;
 Database::execute("UPDATE bookings SET total_amount=? WHERE id=?", [$newTotal, $bookingId]);
 
-flash('success', "Extra '{$name}' added.");
+flash('success', "Extra '" . e($name) . "' added.");
 header('Location: ' . BASE_URL . '/modules/bookings/view.php?id=' . $bookingId);
 exit;

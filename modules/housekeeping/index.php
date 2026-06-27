@@ -75,9 +75,19 @@ $summary = Database::queryOne("
             <td>
               <div class="d-flex gap-8">
                 <?php if ($t['status'] === 'pending'): ?>
-                  <a href="update.php?id=<?= $t['id'] ?>&status=in_progress" class="btn btn-sm btn-info">Start</a>
+                  <form method="post" action="update.php" style="display:inline">
+                    <?= csrfField() ?>
+                    <input type="hidden" name="id" value="<?= $t['id'] ?>">
+                    <input type="hidden" name="status" value="in_progress">
+                    <button type="submit" class="btn btn-sm btn-info">Start</button>
+                  </form>
                 <?php elseif ($t['status'] === 'in_progress'): ?>
-                  <a href="update.php?id=<?= $t['id'] ?>&status=done" class="btn btn-sm btn-success">Done</a>
+                  <form method="post" action="update.php" style="display:inline">
+                    <?= csrfField() ?>
+                    <input type="hidden" name="id" value="<?= $t['id'] ?>">
+                    <input type="hidden" name="status" value="done">
+                    <button type="submit" class="btn btn-sm btn-success">Done</button>
+                  </form>
                 <?php endif; ?>
               </div>
             </td>

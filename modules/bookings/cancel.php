@@ -25,7 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirect("/modules/bookings/view.php?id={$id}");
     } catch (Exception $e) {
         Database::rollback();
-        flash('danger', 'Cancellation failed: ' . $e->getMessage());
+        error_log('[cancel] booking_id=' . $id . ' error=' . $e->getMessage());
+        flash('danger', 'Cancellation failed. Please try again or contact support.');
         redirect("/modules/bookings/view.php?id={$id}");
     }
 }

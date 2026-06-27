@@ -19,14 +19,14 @@ class Mailer {
         $subject = APP_NAME . ' – Booking Confirmation ' . e($booking['booking_ref']);
         $body = "
         <h2>Booking Confirmation</h2>
-        <p>Dear {$guest['first_name']} {$guest['last_name']},</p>
-        <p>Your booking <strong>{$booking['booking_ref']}</strong> is confirmed.</p>
+        <p>Dear " . e($guest['first_name']) . " " . e($guest['last_name']) . ",</p>
+        <p>Your booking <strong>" . e($booking['booking_ref']) . "</strong> is confirmed.</p>
         <ul>
-          <li>Check-in:  {$booking['check_in']}</li>
-          <li>Check-out: {$booking['check_out']}</li>
-          <li>Room:      {$booking['room_number']}</li>
+          <li>Check-in:  " . e($booking['check_in']) . "</li>
+          <li>Check-out: " . e($booking['check_out']) . "</li>
+          <li>Room:      " . e($booking['room_number']) . "</li>
         </ul>
-        <p>Thank you for choosing " . APP_NAME . ".</p>";
+        <p>Thank you for choosing " . e(APP_NAME) . ".</p>";
         return self::send($guest['email'] ?? '', $subject, $body);
     }
 

@@ -12,8 +12,9 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Logs
+# Logs & error output
 *.log
+error_log
 
 # Uploaded files (if added later)
 assets/img/uploads/
