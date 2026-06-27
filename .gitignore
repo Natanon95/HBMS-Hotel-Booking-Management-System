@@ -1,0 +1,19 @@
+# Config with credentials
+config/database.php
+
+# Setup script (delete after use)
+setup.php
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Uploaded files (if added later)
+assets/img/uploads/
